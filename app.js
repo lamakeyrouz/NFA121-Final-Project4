@@ -10,6 +10,7 @@ const courseRoutes = require("./Courses/routes");
 const campusRoutes = require("./Campus/routes");
 const classesRoutes = require("./Classes/routes");
 const teachersRoutes = require("./Teachers/routes");
+const userRoutes = require("./users/routes");
 
 const MONGODB_URI =
   "mongodb+srv://pierre:sEP6C4B90697701@cluster0.a4byf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -23,6 +24,7 @@ app.use(courseRoutes);
 app.use(campusRoutes);
 app.use(classesRoutes);
 app.use(teachersRoutes);
+app.use(userRoutes);
 
 mongoose
   .connect(MONGODB_URI)
