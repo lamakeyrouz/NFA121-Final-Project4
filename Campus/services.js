@@ -5,7 +5,9 @@ exports.getCampuses = async (query, page, limit) => {
     const campuses = await Campus.find();
     return campuses;
   } catch (err) {
-    throw Error("Error while finding campuses");
+    const error = new Error("Error while finding campuses");
+    error.statusCode=404;
+    throw error;
   }
 };
 

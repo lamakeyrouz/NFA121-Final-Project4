@@ -4,11 +4,14 @@ const roomController = require("./controllers");
 
 const router = express.Router();
 
-router.get("/rooms", roomController.getRooms);
+const isAuth = require("../middleware/is-auth");
 
-router.post("/rooms", roomController.addRoom);
 
-router.put("/rooms/:roomId", roomController.editRoom);
+router.get("/rooms",isAuth, roomController.getRooms);
+
+router.post("/rooms", isAuth,roomController.addRoom);
+
+router.put("/rooms/:roomId", isAuth,roomController.editRoom);
 
 
 

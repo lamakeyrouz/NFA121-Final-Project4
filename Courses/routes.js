@@ -4,11 +4,13 @@ const courseController = require("./controllers");
 
 const router = express.Router();
 
-router.get("/courses", courseController.getCourses);
+const isAuth = require("../middleware/is-auth");
 
-router.post("/courses", courseController.addCourse);
+router.get("/courses",isAuth, courseController.getCourses);
 
-router.put("/courses/:courseId", courseController.editCourse);
+router.post("/courses",isAuth, courseController.addCourse);
+
+router.put("/courses/:courseId", isAuth,courseController.editCourse);
 
 
 

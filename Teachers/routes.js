@@ -4,12 +4,12 @@ const teacherController = require("./controllers");
 
 const router = express.Router();
 
-router.get("/teachers", teacherController.getTeachers);
+const isAuth = require("../middleware/is-auth");
 
-router.post("/teachers", teacherController.addTeacher);
+router.get("/teachers", isAuth, teacherController.getTeachers);
 
-router.put("/teachers/:teacherId", teacherController.editTeacher);
+router.post("/teachers", isAuth, teacherController.addTeacher);
 
-
+router.put("/teachers/:teacherId", isAuth, teacherController.editTeacher);
 
 module.exports = router;

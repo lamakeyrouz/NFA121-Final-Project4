@@ -2,11 +2,12 @@ const User = require("./models");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
 const nodemailer = require("nodemailer");
 
+require("dotenv/config");
+
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key:
-        "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",
+      api_key: process.env.sendGridTransportAPIKey,
     },
   })
 );
@@ -27,13 +28,11 @@ exports.signup = async (body) => {
 exports.sendWelcomeMail = async (body) => {
   return transporter.sendMail({
     to: body.email,
-    from: "sendmailstesteurisko@gmail.com",
+    from: process.env.transporterEmail,
     subject: "Signup succeeded!",
-    html: `<p>Welcome ${body.name}</p>`,
+    html: `<p>Welcome ${body.name}, please click on the following link to complete your registration <br> ${body.registrationLink}</p>`,
   });
 };
-
-exports.login = async (body) => {};
 
 exports.findUserWithEmail = async (body) => {
   try {

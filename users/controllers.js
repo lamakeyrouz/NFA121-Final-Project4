@@ -1,14 +1,29 @@
+const UserService = require("./services");
 const jwt = require("jsonwebtoken");
 
-const UserService = require("./services");
-
-exports.signup = async (req, res, next) => {
+exports.addUser = async (req, res, next) => {
   try {
-    await UserService.findUserWithEmail(req.body);
     await UserService.signup(req.body);
-    res.end();
-    UserService.sendWelcomeMail(req.body);
+    const token = jwt.sign(
+      {
+        email: user.email,
+        userId: user._id.toString(),
+      },
+      process.env.tokencode,
+      { expiresIn: "1h" }
+    );
+    res.send({ token: token, userId: user._id.toString(), email: user.email });
   } catch (err) {
+    res.status(500).send({ success: false, message: err.message });
+  }
+};
+
+exports.signupEmail = async (req, res, next) =>{
+  try{
+    await UserService.findUserWithEmail(req.body);
+    UserService.sendWelcomeMail(req.body);
+    res.end()
+  }catch(err){
     res.status(500).send({ success: false, message: err.message });
   }
 };
@@ -22,11 +37,13 @@ exports.login = async (req, res, next) => {
         email: user.email,
         userId: user._id.toString(),
       },
-      "secretcode",
+      process.env.tokencode,
       { expiresIn: "1h" }
     );
-    res.send({ token: token, userId: user._id.toString() });
+    res.send({success: true, token: token, userId: user._id.toString(), email: user.email });
   } catch (err) {
     return res.send({ success: false, message: err.message });
   }
 };
+
+

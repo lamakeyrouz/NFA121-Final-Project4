@@ -2,8 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
 const app = express();
+
+require("dotenv/config");
 
 const roomRoutes = require("./Rooms/routes");
 const courseRoutes = require("./Courses/routes");
@@ -11,9 +12,6 @@ const campusRoutes = require("./Campus/routes");
 const classesRoutes = require("./Classes/routes");
 const teachersRoutes = require("./Teachers/routes");
 const userRoutes = require("./users/routes");
-
-const MONGODB_URI =
-  "mongodb+srv://pierre:sEP6C4B90697701@cluster0.a4byf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,7 +25,7 @@ app.use(teachersRoutes);
 app.use(userRoutes);
 
 mongoose
-  .connect(MONGODB_URI)
+  .connect(process.env.DB_CONNECTION)
   .then((result) => {
     app.listen(3000);
   })

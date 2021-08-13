@@ -4,11 +4,13 @@ const classController = require("./controllers");
 
 const router = express.Router();
 
-router.get("/classes", classController.getClasses);
+const isAuth = require("../middleware/is-auth");
 
-router.post("/classes", classController.addClass);
+router.get("/classes", isAuth,classController.getClasses);
 
-router.put("/classes/:classId", classController.editClass);
+router.post("/classes", isAuth,classController.addClass);
+
+router.put("/classes/:classId",isAuth, classController.editClass);
 
 
 

@@ -4,8 +4,10 @@ const campusController = require("./controllers");
 
 const router = express.Router();
 
-router.get("/campuses", campusController.getCampuses);
+const isAuth = require("../middleware/is-auth");
 
-router.post("/campuses", campusController.addCampus);
+router.get("/campuses",isAuth, campusController.getCampuses);
+
+router.post("/campuses",isAuth, campusController.addCampus);
 
 module.exports = router;
