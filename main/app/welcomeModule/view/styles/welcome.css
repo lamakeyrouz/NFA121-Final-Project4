@@ -1,0 +1,203 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Raleway", sans-serif;
+    background: #f0f2f8 0% 0% no-repeat padding-box;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+/*================== NAV BAR ==================*/
+
+.navbar-default.scrolled {
+    background: #ffff;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #140b77;
+    padding: 15px;
+    margin: 0px 20px 0px 0px;
+}
+
+.navbar-toggle:hover {
+    background-color: #fff !important;
+}
+
+.navbar {
+    color: #262626;
+    background: #f0f2f8 0% 0% no-repeat padding-box;
+    border: none;
+}
+
+.navbar-nav li a {
+    color: #262626 !important;
+    margin: 30px 30px 0px 0px;
+    font-weight: bold;
+    border: 2px solid rgb(240 242 248 / 0%);
+}
+
+.navbar-nav .signup-btn-banner {
+    color: #fff !important;
+    border: 2px solid #140b77;
+}
+
+.navbar-nav .signup-btn-banner:hover {
+    background: #ff776d !important;
+    border-radius: 27px;
+}
+
+.signup-btn-banner {
+    color: #fff !important;
+    border: 2px solid #140b77;
+}
+
+.signup-btn-banner:hover {
+    background: #ff776d !important;
+    border-radius: 27px;
+}
+
+.navbar-nav li a:hover {
+    border-radius: 27px;
+}
+
+.navbar-brand img {
+    margin: 0px 0px 0px 0px;
+    width: 200px;
+    padding: 0px;
+}
+
+.navbar-brand img1 {
+    display: none;
+}
+
+.navbar .btn {
+    padding: 15px 35px;
+    font-weight: bold;
+    background: var(--unnamed-color-140b77) 0% 0% no-repeat padding-box;
+    background: #140b77 0% 0% no-repeat padding-box;
+    border-radius: 25px;
+    color: #ffffff;
+    outline: none;
+    border: none;
+}
+
+
+/*================== BANNER ==================*/
+
+.banners {
+    background-color: #f0f2f8;
+    margin-top: 100px;
+    padding-bottom: 50px;
+}
+
+.banners .col-md-6 .b-t-y h1 {
+    font: normal normal bold 50px/60px Samsung Sharp Sans;
+    letter-spacing: 0px;
+    color: #312b2b;
+    padding-top: 15px;
+    margin-top: 70px;
+}
+
+.banners .col-md-6 .b-t-y span {
+    color: #140b77;
+}
+
+.banners .col-md-6 .b-p-y {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 15px 0px;
+    line-height: 35px;
+}
+
+.banners .col-md-6 .btn-lg {
+    width: 250px;
+    padding: 16px 0px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.12px;
+    background: #140b77 0% 0% no-repeat padding-box;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    text-align: center;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 20%);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.banners .col-md-6 .img-banner {
+    position: relative;
+    width: 100%;
+}
+
+#wave {
+    margin-top: 20px;
+}
+
+.custom-shape-divider-bottom-1614347454 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1614347454 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 251px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1614347454 .shape-fill {
+    fill: #ffffff;
+}
+
+
+/*================== INTERACTIVE ==================*/
+
+@media only screen and (max-width: 991px) {
+    .container>.navbar-header {
+        padding: 25px 0px;
+    }
+    /*navbar  */
+    .navbar-brand img {
+        margin: 0px 0px 0px 0px;
+        margin-top: -20px;
+    }
+    .navbar .btn {
+        padding: 10px 0px;
+        width: 100px;
+        height: 40px;
+        margin-top: 35px;
+    }
+    .navbar-nav li a {
+        margin: 30px 30px 0px 0px;
+    }
+}
+
+@font-face {
+    font-family: "Samsung Sharp Sans";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Samsung Sharp Sans Regular"), url("/webassets/2021/fonts/samsung-sharp-sans/samsungsharpsans.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Samsung Sharp Sans";
+    font-style: normal;
+    font-weight: bold;
+    src: local("Samsung Sharp Sans Bold"), url("/webassets/2021/fonts/samsung-sharp-sans/samsungsharpsans-bold.woff") format("woff");
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Raleway", sans-serif;
+}
