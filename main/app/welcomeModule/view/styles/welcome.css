@@ -9,9 +9,6 @@ a:hover {
     text-decoration: none;
 }
 
-
-/*================== NAV BAR ==================*/
-
 .navbar-default.scrolled {
     background: #ffff;
     border-bottom: 1px solid #ebebeb;
@@ -180,24 +177,4 @@ a:hover {
     .navbar-nav li a {
         margin: 30px 30px 0px 0px;
     }
-}
-
-@font-face {
-    font-family: "Samsung Sharp Sans";
-    font-style: normal;
-    font-weight: normal;
-    src: local("Samsung Sharp Sans Regular"), url("/webassets/2021/fonts/samsung-sharp-sans/samsungsharpsans.woff") format("woff");
-}
-
-@font-face {
-    font-family: "Samsung Sharp Sans";
-    font-style: normal;
-    font-weight: bold;
-    src: local("Samsung Sharp Sans Bold"), url("/webassets/2021/fonts/samsung-sharp-sans/samsungsharpsans-bold.woff") format("woff");
-}
-
-* {
-    margin: 0px;
-    padding: 0px;
-    font-family: "Raleway", sans-serif;
 }
