@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Skedjel</title>
+    <meta property="og:title" content="Skedjel" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="../../../assets/images/Logo.png" />
+    <meta property="og:image:alt" content="Skedjel Logo" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#140b77" />
+
+    <!--JQuery-->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../../../common/styles/css/bootstrap.css" />
+    <script src="../../../common/styles/js/bootstrap.js"></script>
+
+    <!--Main CSS-->
+    <link rel="stylesheet" href="./styles/welcome.css" />
+  </head>
+  <body>
+    <section id="navigation">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#myNavbar"
+            >
+              <span class="icon-bar" style="background-color: #140b77"></span>
+              <span class="icon-bar" style="background-color: #140b77"></span>
+              <span class="icon-bar" style="background-color: #140b77"></span>
+            </button>
+            <a class="navbar-brand" href="./welcome.html"
+              ><img
+                src="../../../assets/images/websiteLogo.png"
+                alt="Skedjel Logo"
+            /></a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../../loginModule/view/login.html">Login</a></li>
+              <li style="height: 100px">
+                <a class="btn signup-btn-banner" href="">SIGNUP</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <section>
+      <section class="banners">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="b-t-y">
+                <h1><span>Scheduling</span> <br />for everyone</h1>
+              </div>
+              <p class="b-p-y">
+                Add your Teachers, Classes, and Courses and we'll generate the
+                calendar
+              </p>
+              <a href="../../loginModule/view/login.html"
+                ><button class="btn-lg text-center signup-btn-banner">
+                  LOGIN TO GET STARTED
+                </button></a
+              >
+            </div>
+            <div class="col-md-6">
+              <img
+                src="../../../assets/images/welcomeMainImage.png"
+                class="img-banner"
+                alt="Welcome To Skedjel"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>
