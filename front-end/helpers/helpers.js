@@ -1,25 +1,13 @@
+/**
+ * Helpers()
+ *
+ * Class that contains all the helper functions in the website
+ */
 class Helpers {
   /**
    * constructor()
    */
-  constructor() {
-    if (!Singleton._instance) {
-      // If instance is null create an instance
-      Singleton._instance = this;
-    }
-
-    // Return already created instance if it exists
-    return Singleton._instance;
-  }
-
-  /**
-   * getInstance()
-   *
-   * returns the shared instance of the class constructor to use as a singleton instance
-   */
-  static getInstance() {
-    return this._instance;
-  }
+  constructor() {}
 
   /**
    *
@@ -47,6 +35,17 @@ class Helpers {
   }
 
   /**
+   * isEmpty()
+   *
+   * @param {String} str
+   *
+   * Check if string is empty or null
+   */
+  isEmpty(str) {
+    return !str || str.length === 0;
+  }
+
+  /**
    *
    * isValidMail()
    *
@@ -60,4 +59,58 @@ class Helpers {
     }
     return false;
   }
+
+  /**
+   *
+   * isValidPass()
+   *
+   * @param {String} mail
+   *
+   * Checks if password is of valid.
+   */
+  isValidPass(pass) {
+    if (pass.length < 8) {
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * showErrorInput()
+   *
+   * @param {HTML Element} element
+   * @param {String} error
+   *
+   * Show an error on input
+   */
+  showErrorInput(element, error) {
+    element.style = "border-color: red";
+    if (!document.getElementById("errorInput")) {
+      element.insertAdjacentHTML(
+        "afterend",
+        `<p style="margin: 0px; padding: 0px; color: red;" id="errorInput">${error}</p>`
+      );
+    }
+  }
+
+  /**
+   * hideErrorInput()
+   *
+   * @param {HTML Element} element
+   *
+   * Hide an error on input
+   */
+  hideErrorInput(element) {
+    element.style = "border-color: null;";
+    let error = document.getElementById("errorInput");
+    if (error) {
+      error.parentNode.removeChild(error);
+    }
+  }
 }
+
+// Initialize the helper class
+const sharedHelpersInstance = new Helpers();
+
+// Freeze the shared instance to be used instead of created instances each time.
+Object.freeze(sharedHelpersInstance);

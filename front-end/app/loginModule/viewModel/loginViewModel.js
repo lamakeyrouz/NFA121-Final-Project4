@@ -35,11 +35,13 @@ class LoginViewModel {
 
       // Email input observer
       emailViewElement.addEventListener("input", function () {
+        loginViewModel.hideError();
         loginModel.fillEmail(emailViewElement.value);
       });
 
       // Password input observer
       passwordViewElement.addEventListener("input", function () {
+        loginViewModel.hideError();
         loginModel.fillPassword(passwordViewElement.value);
       });
 
@@ -55,7 +57,45 @@ class LoginViewModel {
    */
   checkFields() {
     let model = loginModel.getCurrentUserObj();
+    if (!sharedHelpersInstance.isValidMail(model.email)) {
+      sharedHelpersInstance.showErrorInput(
+        document.getElementById("lg_username"),
+        strings.wrongEmail
+      );
+      return;
+    }
+    if (sharedHelpersInstance.isEmpty(model.password)) {
+      sharedHelpersInstance.showErrorInput(
+        document.getElementById("lg_password"),
+        strings.emptyPass
+      );
+      return;
+    }
+
+    if (!sharedHelpersInstance.isValidPass(model.password)) {
+      sharedHelpersInstance.showErrorInput(
+        document.getElementById("lg_password"),
+        strings.invalidPass
+      );
+      return;
+    }
+
+    loginViewModel.hideError();
     loginViewModel.submitLogin();
+  }
+
+  /**
+   * hideError()
+   *
+   * hides error on the input fields
+   */
+  hideError() {
+    sharedHelpersInstance.hideErrorInput(
+      document.getElementById("lg_username")
+    );
+    sharedHelpersInstance.hideErrorInput(
+      document.getElementById("lg_password")
+    );
   }
 
   /**
@@ -64,6 +104,13 @@ class LoginViewModel {
    * Checks fields and calls api to register new user
    */
   async submitLogin() {
-    console.log("HI");
+    axios({
+      method: "post",
+      url: "/login",
+      data: {
+        firstName: "Finn",
+        lastName: "Williams",
+      },
+    });
   }
 }
