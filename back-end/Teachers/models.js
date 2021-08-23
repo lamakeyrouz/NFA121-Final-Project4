@@ -7,11 +7,10 @@ const teacherSchema = new Schema({
     type: String,
     required: true,
   },
-  campusId: {
+  courseId: {
     type: Schema.Types.ObjectId,
-    ref: 'Course',
+    ref: "Course",
   },
-
 
   __v: { type: Number, select: false },
 });

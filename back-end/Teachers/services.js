@@ -12,7 +12,7 @@ exports.getTeachers = async (query, page, limit) => {
 exports.addTeacher = async (query, page, limit) => {
   const teacher = new Teacher({
     name: page.body.name,
-    campusId: page.body.campusId,
+    courseId: page.body.courseId,
   });
   try {
     await teacher.save();
@@ -29,7 +29,7 @@ exports.editTeacher = async (query, page, limit) => {
       {
         $set: {
           name: page.body.name,
-          campusId: page.body.campusId,
+          courseId: page.body.courseId,
         },
       }
     );

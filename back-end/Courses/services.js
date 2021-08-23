@@ -11,7 +11,6 @@ exports.getCourses = async (query, page, limit) => {
 
 exports.addCourse = async (query, page, limit) => {
   const course = new Course({
-    name: page.body.name,
     code: page.body.code,
     campus: page.body.campus,
     classId: page.body.classId,
@@ -30,7 +29,6 @@ exports.editCourse = async (query, page, limit) => {
       { _id: courseId },
       {
         $set: {
-          name: page.body.name,
           code: page.body.code,
           campus: page.body.campus,
           classId: page.body.classId,

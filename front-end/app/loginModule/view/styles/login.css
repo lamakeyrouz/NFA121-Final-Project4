@@ -15,10 +15,7 @@ body {
   background-color: white;
 }
 
-input,
-input[type="button"],
-select,
-textarea {
+input, input[type="button"], select, textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
@@ -40,9 +37,14 @@ a:focus {
 img {
   vertical-align: middle;
 }
+
 input[type="button"] {
   background-color: #140b77 !important;
   border-radius: 10px !important;
   padding: 10px !important;
   color: #ffffff !important;
+}
+
+input[type="button"]:hover {
+  background: #219ebc !important;
 }

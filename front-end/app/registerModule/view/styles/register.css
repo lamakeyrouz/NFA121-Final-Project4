@@ -15,10 +15,7 @@ body {
   background-color: white;
 }
 
-input,
-input[type="button"],
-select,
-textarea {
+input, input[type="button"], select, textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
@@ -46,4 +43,8 @@ input[type="button"] {
   border-radius: 10px !important;
   padding: 10px !important;
   color: #ffffff !important;
+}
+
+input[type="button"]:hover {
+  background: #219ebc !important;
 }

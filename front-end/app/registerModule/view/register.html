@@ -25,18 +25,41 @@
     <!--Main CSS-->
     <link rel="stylesheet" type="text/css" href="./styles/register.css" />
 
-    <!--JavaScript-->
+    <!--Axios-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!--Common-->
+    <script src="../../../observer/observable.js"></script>
     <script src="../../../helpers/strings.js"></script>
-    <script src="../model/registerModel.js"></script>
     <script src="../../../helpers/helpers.js"></script>
+    <script src="../../../services/enpoints.js"></script>
+    <script src="../../../services/requestTypes.js"></script>
+    <script src="../../../services/network.js"></script>
+    <script src="../../../iterator/iterator.js"></script>
+
+    <!--Loader-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../common/loader/loader.css"
+    />
+
+    <!--Template-->
+    <script src="../../../services/template.js"></script>
+
+    <!--Service-->
+    <script src="../../../services/sendMail/sendMailService.js"></script>
+
+    <!--JavaScript-->
+    <script src="../model/registerModel.js"></script>
     <script src="../../../factories/formFactory/forms/signUpForm.js"></script>
     <script src="../../../factories/formFactory/formFactory.js"></script>
     <script src="../../../factories/formFactory/formTypes.js"></script>
     <script src="../viewModel/registerViewModel.js"></script>
   </head>
-
-  <body onload="onLoad()">
-    <div class="loginPage-mainContainer">
+  <body onload="registerViewModel.onLoad()">
+    <div id="loader"></div>
+    <div id="pageContent" class="loginPage-mainContainer">
       <div class="col-md-2">
         <div class="logo">
           <a href="../../welcomeModule/view/welcome.html">

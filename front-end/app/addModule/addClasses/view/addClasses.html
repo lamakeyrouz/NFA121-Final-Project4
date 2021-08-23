@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Add Room | Skedjel</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <!--JQuery-->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="../../../../common/styles/css/bootstrap-map.css"
+    />
+    <script src="../../../../common/styles/js/bootstrap.js"></script>
+
+    <!--Main CSS-->
+    <link rel="stylesheet" type="text/css" href="./styles/addClasses.css" />
+
+    <!--Axios-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!--Common-->
+    <script src="../../../../observer/observable.js"></script>
+    <script src="../../../../helpers/strings.js"></script>
+    <script src="../../../../helpers/helpers.js"></script>
+    <script src="../../../../services/enpoints.js"></script>
+    <script src="../../../../services/requestTypes.js"></script>
+    <script src="../../../../services/network.js"></script>
+    <script src="../../../../iterator/iterator.js"></script>
+
+    <!--Loader-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../../common/loader/loader.css"
+    />
+
+    <!--Template-->
+    <script src="../../../../services/template.js"></script>
+
+    <!--Service-->
+    <script src="../../../../services/classes/classesService.js"></script>
+
+    <!--JavaScript-->
+    <script src="../model/addClassesModel.js"></script>
+    <script src="../../../../factories/formFactory/forms/add/addClassForm.js"></script>
+    <script src="../../../../factories/formFactory/formFactory.js"></script>
+    <script src="../../../../factories/formFactory/formTypes.js"></script>
+    <script src="../viewModel/addClassesViewModel.js"></script>
+  </head>
+
+  <body onload="addClassesViewModel.onLoad()">
+    <div id="loader"></div>
+    <div id="pageContent">
+      <div class="panel-body loginPage-body">
+        <div id="formFactory" class="tab-content"></div>
+      </div>
+    </div>
+  </body>
+</html>

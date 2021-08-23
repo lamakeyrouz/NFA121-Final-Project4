@@ -14,8 +14,34 @@ function FormFactory() {
       case formType.signUp:
         form = new SignUpForm();
         break;
+      case formType.addRoom:
+        form = new AddRoomForm();
+        break;
+      case formType.addCampus:
+        form = new AddCampusForm();
+        break;
+      case formType.addCourse:
+        form = new AddCourseForm();
+        break;
+      case formType.addTeacher:
+        form = new AddTeacherForm();
+        break;
+      case formType.addClass:
+        form = new AddClassForm();
+        break;
+      case formType.associateCourseTeacher:
+        form = new AssociateCourseTeacherForm();
+        break;
+      case formType.associateClassCourse:
+        form = new AssociateClassCourseForm();
+        break;
+      case formType.associateDateClass:
+        form = new AssociateDateClassForm();
+        break;
+      case formType.calendar:
+        form = new CalendarForm();
+        break;
       default:
-        form = new Rectangle();
         break;
     }
     return form.getForm();
