@@ -1,0 +1,40 @@
+* {
+    font-family: "Raleway", sans-serif !important;
+    background: #f0f2f8 0% 0% no-repeat padding-box !important;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Raleway", sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #333;
+    background-color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+#cells {
+    font-family: "Raleway", sans-serif;
+    font-size: 30px;
+    line-height: 1.42857;
+    color: #ffffff;
+    background-color: #ffb7039d !important;
+    border-color: #ffb7039d !important;
+    border-radius: 20px;
+    height: 60px;
+    margin-top: 20px;
+    text-align: left;
+    padding: 10px;
+}
+
+#noData {
+    margin-top: 30px;
+    font-family: "Raleway", sans-serif;
+    font-size: 30px;
+    line-height: 1.42857;
+    color: #333;
+}

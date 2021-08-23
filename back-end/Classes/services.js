@@ -11,8 +11,8 @@ exports.getClasses = async (query, page, limit) => {
 
 exports.addClass = async (query, page, limit) => {
   const classe = new Class({
-    name: page.body.name,
     code: page.body.code,
+    numberOfStudents: page.body.numberOfStudents,
     dateStart: page.body.dateStart,
     dateFinish: page.body.dateFinish,
   });
@@ -30,8 +30,8 @@ exports.editClass = async (query, page, limit) => {
       { _id: classId },
       {
         $set: {
-          name: page.body.name,
           code: page.body.code,
+          numberOfStudents: page.body.numberOfStudents,
           dateStart: page.body.dateStart,
           dateFinish: page.body.dateFinish,
         },

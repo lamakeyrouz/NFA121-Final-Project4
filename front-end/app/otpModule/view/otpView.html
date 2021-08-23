@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Sign Up Confirm | Skedjel</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <!--JQuery-->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="../../../common/styles/css/bootstrap.css" />
+    <script src="../../../common/styles/js/bootstrap.js"></script>
+
+    <!--Axios-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!--Common-->
+    <script src="../../../observer/observable.js"></script>
+    <script src="../../../helpers/strings.js"></script>
+    <script src="../../../helpers/helpers.js"></script>
+    <script src="../../../services/enpoints.js"></script>
+    <script src="../../../services/requestTypes.js"></script>
+    <script src="../../../services/network.js"></script>
+    <script src="../../../iterator/iterator.js"></script>
+
+    <!--Loader-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../common/loader/loader.css"
+    />
+
+    <!--Template-->
+    <script src="../../../services/template.js"></script>
+
+    <!--Service-->
+    <script src="../../../services/otp/otpService.js"></script>
+
+    <!--JavaScript-->
+    <script src="../viewModel/otpViewModel.js"></script>
+
+    <!--Main CSS-->
+    <link rel="stylesheet" href="./styles/otpView.css" />
+  </head>
+
+  <body onload="otpViewModel.onLoad()">
+    <div id="loader"></div>
+    <section id="pageContent">
+      <section class="banners">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="b-t-y">
+                <h1><span>Congratulations!</span></h1>
+              </div>
+              <p class="b-p-y">You have successfully registered to skedjel.</p>
+              <a href="../../homeModule/view/home.html"
+                ><button
+                  id="goToHome"
+                  class="btn-lg text-center signup-btn-banner"
+                >
+                  GO TO HOME
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>

@@ -4,23 +4,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const courseSchema = new Schema({
-  name: {
+  code: {
     type: String,
     required: true,
   },
 
-  code: {
-    type: String
-  },
-
-  campus : {
+  campus: {
     type: String,
-
   },
 
-  classId : {
+  classId: {
     type: Schema.Types.ObjectId,
-    ref: 'Class'
+    ref: "Class",
   },
 
   __v: { type: Number, select: false },

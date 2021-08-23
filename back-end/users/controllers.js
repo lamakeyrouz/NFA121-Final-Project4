@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 exports.addUser = async (req, res, next) => {
   try {
-    await UserService.signup(req.body);
+    const user = await UserService.signup(req.body);
     const token = jwt.sign(
       {
         email: user.email,
@@ -18,12 +18,12 @@ exports.addUser = async (req, res, next) => {
   }
 };
 
-exports.signupEmail = async (req, res, next) =>{
-  try{
+exports.signupEmail = async (req, res, next) => {
+  try {
     await UserService.findUserWithEmail(req.body);
     UserService.sendWelcomeMail(req.body);
-    res.end()
-  }catch(err){
+    res.end();
+  } catch (err) {
     res.status(500).send({ success: false, message: err.message });
   }
 };
@@ -40,10 +40,13 @@ exports.login = async (req, res, next) => {
       process.env.tokencode,
       { expiresIn: "1h" }
     );
-    res.send({success: true, token: token, userId: user._id.toString(), email: user.email });
+    res.send({
+      success: true,
+      token: token,
+      userId: user._id.toString(),
+      email: user.email,
+    });
   } catch (err) {
     return res.send({ success: false, message: err.message });
   }
 };
-
-

@@ -11,6 +11,7 @@ const transporter = nodemailer.createTransport(
     },
   })
 );
+
 exports.signup = async (body) => {
   try {
     const user = new User({
@@ -20,6 +21,7 @@ exports.signup = async (body) => {
       registrationDate: new Date(),
     });
     await user.save();
+    return user;
   } catch (err) {
     throw Error("Could not add User");
   }

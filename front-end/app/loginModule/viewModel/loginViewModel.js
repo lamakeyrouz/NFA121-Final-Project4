@@ -1,51 +1,94 @@
-// Model of the login page
-var loginModel = new LoginModel();
-// Instance of the view model of the login page
-var loginViewModel;
-
 /**
- * onLoad()
+ * loginViewModel.
  *
- * This function in called when the page loads to fill the forms and create an instance of our viewModel
+ * Module that represents the viewModel of the login page
  */
-function onLoad() {
-  loginViewModel = new LoginViewModel();
-  const formFactory = new FormFactory();
-  document.getElementById("formFactory").innerHTML = formFactory.createForm(
-    formType.login
-  );
-  loginViewModel.bind();
-}
+var loginViewModel = (function () {
+  // Private objects and functions
 
-/**
- * LoginViewModel()
- *
- * Class that represents the viewModel of the login page
- */
-class LoginViewModel {
+  // Model of the login page
+  var loginModel = new LoginModel();
+
   /**
-   * constructor()
+   * showLoader()
+   *
+   * @param {Boolean} show
+   *
+   * show/hide loader of page
    */
-  constructor() {
-    // Bind the observers to functions in our model
-    this.bind = function () {
-      let emailViewElement = document.getElementById("lg_username");
-      let passwordViewElement = document.getElementById("lg_password");
-      let submitLoginViewElement = document.getElementById("submitLogin");
+  function showLoader(show) {
+    if (show) {
+      document.getElementById("pageContent").style.display = "none";
+      document.getElementById("loader").style.display = "block";
+    } else {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("pageContent").style.display = "block";
+    }
+  }
 
-      // Email input observer
-      emailViewElement.addEventListener("input", function () {
-        loginModel.fillEmail(emailViewElement.value);
-      });
+  // Bind observables to elements(observers)
+  function bind() {
+    // Get DOM Elements
+    let emailViewElement = document.getElementById("lg_username");
+    let passwordViewElement = document.getElementById("lg_password");
+    let submitLoginViewElement = document.getElementById("submitLogin");
 
-      // Password input observer
-      passwordViewElement.addEventListener("input", function () {
-        loginModel.fillPassword(passwordViewElement.value);
-      });
+    // instantiate new Observer class
+    const emailObserver = new Observable(); // email observable
+    const passwordObserver = new Observable(); // password observable
+    const submitLoginObserver = new Observable(); // submit login button observable
 
-      // Submit register input observer onclick
-      submitLoginViewElement.addEventListener("click", this.checkFields);
+    /**
+     * updateEmail()
+     *
+     * @param {String} email
+     *
+     * observable function that will be called on notify
+     */
+    const updateEmail = (email) => {
+      hideError();
+      loginModel.fillEmail(email);
     };
+
+    /**
+     * updatePassword()
+     *
+     * @param {String} pass
+     *
+     * observable function that will be called on notify
+     */
+    const updatePassword = (pass) => {
+      hideError();
+      loginModel.fillPassword(pass);
+    };
+
+    /**
+     * submitClicked()
+     *
+     * observable function that will be called on notify
+     */
+    const submitClicked = checkFields;
+
+    // subscribe to some observers
+    emailObserver.subscribe(updateEmail);
+    passwordObserver.subscribe(updatePassword);
+    submitLoginObserver.subscribe(submitClicked);
+
+    // notify all observers about new data on event
+    // Email input observer
+    emailViewElement.addEventListener("input", () => {
+      emailObserver.notify(emailViewElement.value);
+    });
+
+    // Password input observer
+    passwordViewElement.addEventListener("input", () => {
+      passwordObserver.notify(passwordViewElement.value);
+    });
+
+    // Submit register input observer onclick
+    submitLoginViewElement.addEventListener("click", () => {
+      submitLoginObserver.notify();
+    });
   }
 
   /**
@@ -53,17 +96,75 @@ class LoginViewModel {
    *
    * Validate each field before submission
    */
-  checkFields() {
+  function checkFields() {
     let model = loginModel.getCurrentUserObj();
-    loginViewModel.submitLogin();
+    // Check if mail is valid
+    if (!sharedHelpersInstance.isValidMail(model.email)) {
+      sharedHelpersInstance.showErrorInput(
+        document.getElementById("lg_username"),
+        strings.wrongEmail
+      );
+      return;
+    }
+    // Check if password is empty
+    if (sharedHelpersInstance.isEmpty(model.password)) {
+      sharedHelpersInstance.showErrorInput(
+        document.getElementById("lg_password"),
+        strings.emptyPass
+      );
+      return;
+    }
+    // Check if password is valid
+    if (!sharedHelpersInstance.isValidPass(model.password)) {
+      sharedHelpersInstance.showErrorInput(
+        document.getElementById("lg_password"),
+        strings.invalidPass
+      );
+      return;
+    }
+
+    hideError();
+    // If all the fields are valid, login the user
+    submitLogin();
   }
 
   /**
-   * submitRegister()
+   * hideError()
    *
-   * Checks fields and calls api to register new user
+   * hides error on the input fields
    */
-  async submitLogin() {
-    console.log("HI");
+  function hideError() {
+    sharedHelpersInstance.hideErrorInput(
+      document.getElementById("lg_username")
+    );
+    sharedHelpersInstance.hideErrorInput(
+      document.getElementById("lg_password")
+    );
   }
-}
+
+  /**
+   * submitLogin()
+   *
+   * Checks fields and calls api to login user
+   */
+  async function submitLogin() {
+    await login(showLoader, loginModel.getCurrentUserObj());
+  }
+
+  // Return an object exposed to the public
+  return {
+    /**
+     * onLoad()
+     *
+     * This function in called when the page loads
+     */
+    onLoad: function () {
+      const formFactory = new FormFactory();
+      document.getElementById("formFactory").innerHTML = formFactory.createForm(
+        formType.login
+      );
+      showLoader(false);
+      bind();
+    },
+  };
+})();
