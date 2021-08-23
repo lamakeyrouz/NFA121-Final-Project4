@@ -303,9 +303,12 @@ var viewCalendarViewModel = (function () {
       }
     }
 
-    for (let row of table) {
+    for (let i = 0; i < table.length; i++) {
       let classTemp = [];
-      for (let item of row.classes) {
+      for (let y = 0; y < i; y++) {
+        classTemp.push({ data: {} });
+      }
+      for (let item of table[i].classes) {
         firstRow = firstRow + `<div>${item.time}</div>`;
         classTemp.push(item);
       }
