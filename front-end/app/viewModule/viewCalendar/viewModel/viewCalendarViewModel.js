@@ -298,14 +298,27 @@ var viewCalendarViewModel = (function () {
     let classes = [];
     let numberOfColumns = 0;
     for (let row of table) {
+      for (let item of row.classes) {
+        numberOfColumns++;
+      }
+    }
+
+    for (let row of table) {
       let classTemp = [];
       for (let item of row.classes) {
         firstRow = firstRow + `<div>${item.time}</div>`;
         classTemp.push(item);
-        numberOfColumns++;
+      }
+      let length = classTemp.length;
+      if (classTemp.length < numberOfColumns) {
+        while (length < numberOfColumns) {
+          classTemp.push({ data: {} });
+          length++;
+        }
       }
       classes.push(classTemp);
     }
+
     times.innerHTML = firstRow;
 
     let firstColumn = "";
@@ -317,17 +330,13 @@ var viewCalendarViewModel = (function () {
     let content = document.getElementById("content");
     let contentHtml = "";
     for (let row of classes) {
-      if (row.length < numberOfColumns) {
-        let count = 0;
-        for (let cell of row) {
-          count++;
+      for (let cell of row) {
+        if (cell.data) {
+          contentHtml = contentHtml + `<div></div>`;
+        } else {
           contentHtml =
             contentHtml +
             `<div class="cell"><b>Class</b>: ${cell.className}, <b>Teacher</b>: ${cell.teacherName}, <b>Room</b>: ${cell.room}</div>`;
-        }
-        while (count < numberOfColumns) {
-          contentHtml = contentHtml + `<div class-"cell"></div>`;
-          count++;
         }
       }
     }
